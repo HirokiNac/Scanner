@@ -23,7 +23,7 @@ namespace Scanner
         int ZNum;
         double dExposTime;
 
-        const int chCount = 8;
+        const int nCh = 8;
 
         public CountData2D(int _iScanX, int _iScanZ, double _dExposTime)
         {
@@ -32,8 +32,8 @@ namespace Scanner
             dExposTime = _dExposTime;
             PosX = new double[XNum, ZNum];
             PosZ = new double[XNum, ZNum];
-            dCount = new double[chCount][,];
-            for (int i = 0; i < chCount; i++) dCount[i] = new double[XNum, ZNum];
+            dCount = new double[nCh][,];
+            for (int i = 0; i < nCh; i++) dCount[i] = new double[XNum, ZNum];
         }
 
         public void Add(int i, int j, double x, double z, double[] _count, int NormCh = -1)
@@ -41,7 +41,7 @@ namespace Scanner
             PosX[i, j] = x;
             PosZ[i, j] = z;
             count = _count;
-            for (int k = 0; k < chCount; k++)
+            for (int k = 0; k < nCh; k++)
                 dCount[k][i, j] = _count[k];
         }
 
@@ -100,6 +100,26 @@ namespace Scanner
                 File.WriteAllText(saveDir + "\\" + strCh[k] + "_" + strChName[k] + ".csv", sb.ToString());
             }
             #endregion
+        }
+
+        public double[][,] NCountData2D(int Ch)
+        {
+            double[][,] data = dCount;
+            if (0 <= Ch || Ch < 8)
+            {
+                double[,] nData = data[Ch];
+                for (int k = 0; k < nCh; k++)
+                {
+                    for(int i=0;i<XNum;i++)
+                    {
+                        for(int j=0;j<ZNum;j++)
+                        {
+                            data[k][i, j] /= nData[i, j];
+                        }
+                    }
+                }
+            }
+            return data;
         }
     }
 

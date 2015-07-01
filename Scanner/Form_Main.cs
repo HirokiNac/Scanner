@@ -16,7 +16,7 @@ using System.Xml.Serialization;
 
 namespace Scanner
 {
-    public partial class Form1 : Form
+    public partial class Form_Main : Form
     {
 
         Form_Log form_Log;
@@ -83,7 +83,7 @@ namespace Scanner
 
         #endregion
 
-        public Form1()
+        public Form_Main()
         {
             InitializeComponent();
 

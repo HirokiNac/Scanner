@@ -79,10 +79,11 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridView_Counter = new System.Windows.Forms.DataGridView();
             this.checkBox_woZero = new System.Windows.Forms.CheckBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.nud_NormalizedCh = new System.Windows.Forms.NumericUpDown();
+            this.radioButton_2DMapNormalize = new System.Windows.Forms.RadioButton();
+            this.radioButton_2DMapRawData = new System.Windows.Forms.RadioButton();
             this.textBox_Ch2 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox_Ch1 = new System.Windows.Forms.TextBox();
@@ -112,7 +113,6 @@
             this.toolStripStatusLabel_Status = new System.Windows.Forms.ToolStripStatusLabel();
             this.ofd_setting = new System.Windows.Forms.OpenFileDialog();
             this.sfd_setting = new System.Windows.Forms.SaveFileDialog();
-            this.dataGridView_Counter = new System.Windows.Forms.DataGridView();
             this.Column_Ch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
@@ -124,7 +124,8 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Counter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_NormalizedCh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -134,7 +135,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Counter)).BeginInit();
             this.SuspendLayout();
             // 
             // radioButton_RasterScan
@@ -655,9 +655,9 @@
             // 
             this.groupBox3.Controls.Add(this.dataGridView_Counter);
             this.groupBox3.Controls.Add(this.checkBox_woZero);
-            this.groupBox3.Controls.Add(this.numericUpDown1);
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton1);
+            this.groupBox3.Controls.Add(this.nud_NormalizedCh);
+            this.groupBox3.Controls.Add(this.radioButton_2DMapNormalize);
+            this.groupBox3.Controls.Add(this.radioButton_2DMapRawData);
             this.groupBox3.Controls.Add(this.textBox_Ch2);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.textBox_Ch1);
@@ -689,12 +689,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "2D Map";
             // 
+            // dataGridView_Counter
+            // 
+            this.dataGridView_Counter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Counter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column_Ch,
+            this.Column_Count});
+            this.dataGridView_Counter.Location = new System.Drawing.Point(6, 93);
+            this.dataGridView_Counter.Name = "dataGridView_Counter";
+            this.dataGridView_Counter.RowTemplate.Height = 21;
+            this.dataGridView_Counter.Size = new System.Drawing.Size(240, 190);
+            this.dataGridView_Counter.TabIndex = 6;
+            // 
             // checkBox_woZero
             // 
             this.checkBox_woZero.AutoSize = true;
             this.checkBox_woZero.Checked = true;
             this.checkBox_woZero.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_woZero.Location = new System.Drawing.Point(6, 71);
+            this.checkBox_woZero.Location = new System.Drawing.Point(6, 62);
             this.checkBox_woZero.Name = "checkBox_woZero";
             this.checkBox_woZero.Size = new System.Drawing.Size(71, 16);
             this.checkBox_woZero.TabIndex = 5;
@@ -702,40 +714,43 @@
             this.checkBox_woZero.UseVisualStyleBackColor = true;
             this.checkBox_woZero.CheckedChanged += new System.EventHandler(this.checkBox_woZero_CheckedChanged);
             // 
-            // numericUpDown1
+            // nud_NormalizedCh
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(188, 40);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nud_NormalizedCh.Location = new System.Drawing.Point(188, 40);
+            this.nud_NormalizedCh.Maximum = new decimal(new int[] {
             7,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDown1.TabIndex = 4;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nud_NormalizedCh.Name = "nud_NormalizedCh";
+            this.nud_NormalizedCh.Size = new System.Drawing.Size(50, 19);
+            this.nud_NormalizedCh.TabIndex = 4;
+            this.nud_NormalizedCh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // radioButton2
+            // radioButton_2DMapNormalize
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(85, 40);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(97, 16);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Normalized Ch";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton_2DMapNormalize.AutoSize = true;
+            this.radioButton_2DMapNormalize.Checked = true;
+            this.radioButton_2DMapNormalize.Location = new System.Drawing.Point(85, 40);
+            this.radioButton_2DMapNormalize.Name = "radioButton_2DMapNormalize";
+            this.radioButton_2DMapNormalize.Size = new System.Drawing.Size(97, 16);
+            this.radioButton_2DMapNormalize.TabIndex = 3;
+            this.radioButton_2DMapNormalize.TabStop = true;
+            this.radioButton_2DMapNormalize.Text = "Normalized Ch";
+            this.radioButton_2DMapNormalize.UseVisualStyleBackColor = true;
+            this.radioButton_2DMapNormalize.CheckedChanged += new System.EventHandler(this.radioButton_2DMapNormalize_CheckedChanged);
             // 
-            // radioButton1
+            // radioButton_2DMapRawData
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 40);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(73, 16);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Raw Data";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton_2DMapRawData.AutoSize = true;
+            this.radioButton_2DMapRawData.Location = new System.Drawing.Point(6, 40);
+            this.radioButton_2DMapRawData.Name = "radioButton_2DMapRawData";
+            this.radioButton_2DMapRawData.Size = new System.Drawing.Size(73, 16);
+            this.radioButton_2DMapRawData.TabIndex = 3;
+            this.radioButton_2DMapRawData.TabStop = true;
+            this.radioButton_2DMapRawData.Text = "Raw Data";
+            this.radioButton_2DMapRawData.UseVisualStyleBackColor = true;
+            this.radioButton_2DMapRawData.CheckedChanged += new System.EventHandler(this.radioButton_2DMapRawData_CheckedChanged);
             // 
             // textBox_Ch2
             // 
@@ -975,18 +990,6 @@
             // 
             this.ofd_setting.FileName = "ofd_setting";
             // 
-            // dataGridView_Counter
-            // 
-            this.dataGridView_Counter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Counter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column_Ch,
-            this.Column_Count});
-            this.dataGridView_Counter.Location = new System.Drawing.Point(6, 93);
-            this.dataGridView_Counter.Name = "dataGridView_Counter";
-            this.dataGridView_Counter.RowTemplate.Height = 21;
-            this.dataGridView_Counter.Size = new System.Drawing.Size(240, 190);
-            this.dataGridView_Counter.TabIndex = 6;
-            // 
             // Column_Ch
             // 
             this.Column_Ch.HeaderText = "Channel";
@@ -998,7 +1001,7 @@
             // 
             this.Column_Count.HeaderText = "Count";
             this.Column_Count.Name = "Column_Count";
-            this.Column_Count.Width = 120;
+            this.Column_Count.Width = 125;
             // 
             // Form_2DScan
             // 
@@ -1015,7 +1018,7 @@
             this.Controls.Add(this.button_ScanReserveAdd);
             this.Controls.Add(this.listBox_ScanReserve);
             this.Name = "Form_2DScan";
-            this.Text = "2DScaaaan";
+            this.Text = "2DScan";
             this.Load += new System.EventHandler(this.Form_2DScan_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1034,7 +1037,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Counter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_NormalizedCh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -1045,7 +1049,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Counter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1116,9 +1119,9 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.NumericUpDown nud_NormalizedCh;
+        private System.Windows.Forms.RadioButton radioButton_2DMapNormalize;
+        private System.Windows.Forms.RadioButton radioButton_2DMapRawData;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.RadioButton radioButton_Focus1;

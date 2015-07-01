@@ -15,7 +15,7 @@ namespace Scanner
 {
     public partial class Form_2DScan : Form
     {
-        Form1 form1;
+        Form_Main form1;
         Scan2D scan2D;
         List<ScanPara2D> qList = new List<ScanPara2D>();
 
@@ -30,7 +30,9 @@ namespace Scanner
         readonly string[] EH = new string[] { "EH1", "EH2", "EH3", "EH4" };
         const int nCh = 8;
 
-        public Form_2DScan(Form1 _form1)
+        int NormalizedCh;
+
+        public Form_2DScan(Form_Main _form1)
         {
             InitializeComponent();
 
@@ -91,14 +93,16 @@ namespace Scanner
 
         void scan2D_graphSet(CountData2D scan2DData)
         {
+            double[][,] data = scan2DData.NCountData2D(NormalizedCh);
+
             BeginInvoke((Action)(() =>
             {
                 ClsNac.Graphic.Plot2dPlane Plane;
-                for (int i = 0; i < picBox.Length; i++)
+                for (int k = 0; k < nCh; k++)
                 {
-                    Plane = new ClsNac.Graphic.Plot2dPlane(picBox[i]);
-                    Plane.Draw(scan2DData.dCount[i], this.woZero);
-                    this.dataGridView_Counter["Column_Count", i].Value = scan2DData.count[i];
+                    Plane = new ClsNac.Graphic.Plot2dPlane(picBox[k]);
+                    Plane.Draw(data[k], this.woZero);
+                    this.dataGridView_Counter["Column_Count", k].Value = scan2DData.count[k];
                 }
                 
             }));
@@ -355,8 +359,8 @@ namespace Scanner
                 if(flagFromMouse)
                 {
                     PictureBox pb = (PictureBox)sender;
-                    double x = pm.XStart + pm.XPitch * pm.XNum * e.Location.X / pb.Size.Width;
-                    double z = pm.ZStart + pm.ZPitch * pm.ZNum * e.Location.Y / pb.Size.Height;
+                    double x = pm.XStart + pm.XPitch * (int)(pm.XNum * e.Location.X / pb.Size.Width);
+                    double z = pm.ZStart + pm.ZPitch * (int)(pm.ZNum * e.Location.Y / pb.Size.Height);
 
                     this.textBox_XStart.Text = x.ToString("F0");
                     this.textBox_ZStart.Text = z.ToString("F0");
@@ -375,7 +379,6 @@ namespace Scanner
 
         XmlSerializer serializer = new XmlSerializer(typeof(ScanPara2D));
         FileStream fs;
-
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -431,6 +434,9 @@ namespace Scanner
 
         }
 
+        #endregion
+
+        #region checkbox
         private void checkBox_woZero_CheckedChanged(object sender, EventArgs e)
         {
             if (this.checkBox_woZero.Checked)
@@ -438,8 +444,31 @@ namespace Scanner
             else
                 this.woZero = false;
         }
+
+        private void radioButton_2DMapRawData_CheckedChanged(object sender, EventArgs e)
+        {
+            if(this.radioButton_2DMapRawData.Checked)
+            {
+                NormalizedCh = -1;
+            }
+            else
+            {
+                NormalizedCh = (int)nud_NormalizedCh.Value;
+            }
+        }
+
+        private void radioButton_2DMapNormalize_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButton_2DMapRawData.Checked)
+            {
+                NormalizedCh = -1;
+            }
+            else
+            {
+                NormalizedCh = (int)nud_NormalizedCh.Value;
+            }
+        }
+
         #endregion
-
-
     }
 }

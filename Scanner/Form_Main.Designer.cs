@@ -1,6 +1,6 @@
 ﻿namespace Scanner
 {
-    partial class Form1
+    partial class Form_Main
     {
         /// <summary>
         /// 必要なデザイナー変数です。

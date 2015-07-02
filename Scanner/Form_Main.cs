@@ -1178,8 +1178,6 @@ namespace Scanner
 
         #endregion
 
-
-
         #region graph
 
         public void scan_graphSet(ScanData _scanData)
@@ -1269,6 +1267,7 @@ namespace Scanner
             if (graphFilePath != null)
                 GraphFromFile(graphFilePath, peakPosCount.Item1, peakPosCount.Item2);
 
+            this.zgc_Profile.GraphPane.YAxis.Type = this.GraphLog ? AxisType.Log : AxisType.Linear;
             this.zgc_Profile.GraphPane.AxisChange();
             BeginInvoke((Action)(() =>
             {

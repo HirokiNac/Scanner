@@ -45,7 +45,7 @@ namespace Scanner
                 dCount[k][i, j] = _count[k];
         }
 
-        public void Save(string _saveDir,string[] strChName)
+        public void Save(string _saveDir, string[] strChName)
         {
             saveDir = _saveDir;
             if (!System.IO.Directory.Exists(saveDir)) System.IO.Directory.CreateDirectory(saveDir);
@@ -104,22 +104,28 @@ namespace Scanner
 
         public double[][,] NCountData2D(int Ch)
         {
-            double[][,] data = dCount;
-            if (0 <= Ch || Ch < 8)
+            if (0 <= Ch && Ch < 8)
             {
-                double[,] nData = data[Ch];
+                double[][,] data = new double[nCh][,];
+                double[,] nData = dCount[Ch];
+
                 for (int k = 0; k < nCh; k++)
                 {
-                    for(int i=0;i<XNum;i++)
+                    data[k] = new double[XNum, ZNum];
+                    for (int i = 0; i < XNum; i++)
                     {
-                        for(int j=0;j<ZNum;j++)
+                        for (int j = 0; j < ZNum; j++)
                         {
-                            data[k][i, j] /= nData[i, j];
+                            data[k][i, j] = dCount[k][i, j] / nData[i, j];
                         }
                     }
                 }
+                return data;
+
             }
-            return data;
+            else
+            { return dCount; }
+
         }
     }
 
